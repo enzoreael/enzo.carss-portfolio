@@ -17,10 +17,12 @@
             --primary-blue: #0a84ff;
             --dark-bg: #121212;
             --darker-bg: #0a0a0a;
-            --glass-dark: rgba(30, 30, 40, 0.7);
-            --glass-light: rgba(50, 50, 70, 0.4);
+            --glass-dark: rgba(30, 30, 40, 0.9);
+            --glass-light: rgba(50, 50, 70, 0.6);
             --text-light: #f5f5f7;
             --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(25, 25, 35, 0.95);
+            --sale-color: #ff375f;
         }
 
         body {
@@ -28,6 +30,7 @@
             color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .container {
@@ -44,13 +47,21 @@
             width: 100%;
             z-index: 1000;
             padding: 15px 20px;
-            background: rgba(20, 20, 30, 0.88);
+            background: rgba(15, 15, 25, 0.95);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-color);
             display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-top {
+            display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
         }
 
         .logo {
@@ -69,7 +80,7 @@
 
         .logo-text {
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-light);
         }
 
@@ -98,106 +109,24 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 150px 20px 60px;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-        }
-
-        .bg-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(10, 132, 255, 0.05);
-            filter: blur(40px);
-        }
-
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            left: -100px;
-        }
-
-        .shape-2 {
-            width: 500px;
-            height: 500px;
-            bottom: -250px;
-            right: -250px;
-            background: rgba(10, 132, 255, 0.08);
-        }
-
-        .carousel {
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            position: relative;
-            margin-bottom: 40px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .carousel-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .carousel-item {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
+            background-image: url('https://static.wixstatic.com/media/a3a3cf_63516f7d50734683907a3b5ccf194c45~mv2.jpg/v1/fill/w_369,h_553,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC01832_JPG.jpg');
             background-size: cover;
             background-position: center;
-        }
-
-        .carousel-item.active {
-            opacity: 1;
-        }
-
-        .carousel-item:nth-child(1) {
-            background: linear-gradient(45deg, #001235, #003366);
-        }
-
-        .carousel-item:nth-child(2) {
-            background: linear-gradient(45deg, #1a0035, #330066);
-        }
-
-        .carousel-item:nth-child(3) {
-            background: linear-gradient(45deg, #350001, #660014);
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            text-align: left;
-        }
-
-        .carousel-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .carousel-caption p {
-            font-size: 1rem;
-            opacity: 0.8;
+            background-repeat: no-repeat;
+            z-index: -2;
+            filter: brightness(0.4);
         }
 
         .hero-content {
@@ -206,24 +135,25 @@
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
             max-width: 700px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin-bottom: 20px;
             font-weight: 800;
             color: var(--text-light);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 600px;
             margin-bottom: 40px;
             line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .social-boxes {
@@ -245,6 +175,8 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-light);
         }
 
         .social-box:hover {
@@ -270,6 +202,7 @@
             color: var(--text-light);
             font-size: 2rem;
             animation: bounce 2s infinite;
+            z-index: 2;
         }
 
         @keyframes bounce {
@@ -280,46 +213,149 @@
 
         /* Products Section */
         .products {
-            padding: 80px 20px;
+            padding: 100px 20px;
             background: var(--dark-bg);
             border-top: 1px solid var(--border-color);
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
             font-weight: 700;
             color: var(--text-light);
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
             margin-bottom: 50px;
         }
 
         .product-card {
-            background: var(--glass-dark);
-            border-radius: 20px;
+            background: var(--card-bg);
+            border-radius: 16px;
             overflow: hidden;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
             border: 1px solid var(--primary-blue);
-            box-shadow: 0 15px 25px rgba(10, 132, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(10, 132, 255, 0.15);
         }
 
-        .product-img {
+        .product-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
+            background: linear-gradient(45deg, #001235, #003366);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .sale-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--sale-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .product-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            margin-bottom: 20px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            margin-right: 10px;
+        }
+
+        .sale-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--sale-color);
+        }
+
+        .current-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .product-desc {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .product-btn {
+            background: var(--primary-blue);
+            color: var(--text-light);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .product-btn:hover {
+            background: #0071e3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(10, 132, 255, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            background: var(--darker-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            height: 400px;
             background: linear-gradient(45deg, #001235, #003366);
             display: flex;
             align-items: center;
@@ -328,50 +364,71 @@
             font-size: 3rem;
         }
 
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .product-price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-        }
-
-        .product-desc {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.5;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .product-btn {
-            background: rgba(10, 132, 255, 0.15);
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
             color: var(--text-light);
-            border: 1px solid var(--primary-blue);
-            padding: 10px 20px;
-            border-radius: 12px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 20px;
+            background: var(--dark-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .contact-btn {
+            background: var(--primary-blue);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 100%;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .product-btn:hover {
-            background: var(--primary-blue);
+        .contact-btn:hover {
+            background: #0071e3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(10, 132, 255, 0.3);
         }
 
         /* Footer */
         footer {
             background: var(--darker-bg);
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             border-top: 1px solid var(--border-color);
         }
@@ -380,7 +437,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .credits {
@@ -398,7 +455,7 @@
             gap: 8px;
         }
 
-        .logo-small {
+        .deepseek-logo {
             height: 20px;
             width: auto;
         }
@@ -406,7 +463,7 @@
         /* Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
             100% { transform: translateY(0px); }
         }
 
@@ -416,16 +473,25 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 968px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-image {
+                height: 300px;
             }
         }
 
         @media (max-width: 768px) {
             header {
+                padding: 12px 15px;
+            }
+            
+            .header-top {
                 flex-direction: column;
                 gap: 15px;
-                padding: 15px;
+                margin-bottom: 15px;
             }
             
             .nav-links {
@@ -434,8 +500,12 @@
                 justify-content: center;
             }
             
+            .hero {
+                padding: 180px 20px 60px;
+            }
+            
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
@@ -446,12 +516,20 @@
                 flex-direction: column;
             }
             
-            .carousel {
-                height: 300px;
-            }
-            
             .products-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .about-text h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-content h2 {
+                font-size: 2.2rem;
             }
             
             .credits {
@@ -483,60 +561,34 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="https://p16-pu-sign-no.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/9d6953940b54054f65796f3ddd48f349~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=f67db790&x-expires=1757851200&x-signature=q9Qe3UwYWAGLeDY3pz6EQTMvj%2BY%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a" alt="Enzo" class="logo-img">
-            <span class="logo-text">enzo.carsss</span>
-        </div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+        <div class="header-top">
+            <div class="logo">
+                <img src="https://p16-pu-sign-no.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/9d6953940b54054f65796f3ddd48f349~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=f67db790&x-expires=1757851200&x-signature=q9Qe3UwYWAGLeDY3pz6EQTMvj%2BY%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a" alt="Enzo" class="logo-img">
+                <span class="logo-text">enzo.carsss</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
     </header>
 
     <section class="hero" id="home">
-        <div class="hero-bg">
-            <div class="bg-shape shape-1"></div>
-            <div class="bg-shape shape-2"></div>
-        </div>
-        
-        <div class="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="carousel-caption">
-                        <h3>Photography</h3>
-                        <p>Capturing moments with creativity and passion</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-caption">
-                        <h3>Videography</h3>
-                        <p>Creating stunning visual stories</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-caption">
-                        <h3>UI Design</h3>
-                        <p>Designing beautiful and functional interfaces</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         <div class="hero-content">
             <h1 class="typewriter">Hey, I'm Enzo</h1>
             <p>A hobby photographer, videographer, editor and UI designer who really loves his passion for all things creative. Welcome to my world of visual storytelling.</p>
             
             <div class="social-boxes">
-                <div class="social-box">
+                <a href="https://www.tiktok.com/@enzo.carsss" class="social-box" target="_blank">
                     <i class="fab fa-tiktok social-icon"></i>
                     <span class="social-text">enzo.carsss</span>
-                </div>
-                <div class="social-box">
+                </a>
+                <a href="https://www.instagram.com/enzo.carsss" class="social-box" target="_blank">
                     <i class="fab fa-instagram social-icon"></i>
                     <span class="social-text">enzo.carsss</span>
-                </div>
+                </a>
             </div>
         </div>
         
@@ -551,81 +603,94 @@
             <div class="products-grid">
                 <!-- Product 1 -->
                 <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-palette"></i>
+                    <div class="product-image">
+                        <div class="sale-badge">On Sale</div>
+                        <i class="fas fa-video"></i>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Cinematic Preset Pack</h3>
-                        <div class="product-price">$29.99</div>
-                        <p class="product-desc">Enhance your videos with these professional cinematic color grading presets for Premiere Pro.</p>
-                        <button class="product-btn">Get Now</button>
+                        <h3 class="product-title">How to Upload High-Quality Videos</h3>
+                        <div class="product-price">
+                            <span class="original-price">€10.99</span>
+                            <span class="sale-price">€8.79</span>
+                        </div>
+                        <p class="product-desc">Learn the secrets to uploading high-quality videos that stand out on social media platforms.</p>
+                        <button class="product-btn">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-cloud-sun"></i>
+                    <div class="product-image">
+                        <i class="fas fa-car"></i>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Golden Hour LUTs</h3>
-                        <div class="product-price">$24.99</div>
-                        <p class="product-desc">Perfect golden hour looks for your footage. Compatible with all major editing software.</p>
-                        <button class="product-btn">Get Now</button>
+                        <h3 class="product-title">Rainy Porsche 997 GT3 (911)</h3>
+                        <div class="product-price">
+                            <span class="current-price">€12.99</span>
+                        </div>
+                        <p class="product-desc">Stunning rainy day preset pack for Porsche photography, perfect for creating moody automotive shots.</p>
+                        <button class="product-btn">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 3 -->
                 <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-mobile-alt"></i>
+                    <div class="product-image">
+                        <div class="sale-badge">On Sale</div>
+                        <i class="fas fa-film"></i>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Mobile Presets Bundle</h3>
-                        <div class="product-price">$19.99</div>
-                        <p class="product-desc">Specifically designed for mobile content creators. Works with CapCut and other mobile editors.</p>
-                        <button class="product-btn">Get Now</button>
+                        <h3 class="product-title">Tracking / Stabilisation Tutorial [PC ONLY]</h3>
+                        <div class="product-price">
+                            <span class="current-price">€14.99</span>
+                        </div>
+                        <p class="product-desc">Professional video stabilization tutorial for PC users. Learn how to make your footage smooth and cinematic.</p>
+                        <button class="product-btn">Add to Cart</button>
                     </div>
                 </div>
                 
                 <!-- Product 4 -->
                 <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-car"></i>
+                    <div class="product-image">
+                        <div class="sale-badge">On Sale</div>
+                        <i class="fas fa-paint-brush"></i>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Automotive Pack</h3>
-                        <div class="product-price">$34.99</div>
-                        <p class="product-desc">Specialized presets for car photography and videography. Make vehicles pop with these LUTs.</p>
-                        <button class="product-btn">Get Now</button>
+                        <h3 class="product-title">Video Edit/Colorgrade Service</h3>
+                        <div class="product-price">
+                            <span class="current-price">From €39.99</span>
+                        </div>
+                        <p class="product-desc">Professional video editing and color grading service. Let me transform your footage into a cinematic masterpiece.</p>
+                        <button class="product-btn">Get Quote</button>
                     </div>
                 </div>
-                
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-portrait"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Portrait Pro Presets</h3>
-                        <div class="product-price">$27.99</div>
-                        <p class="product-desc">Flattering skin tones and professional grading for portrait photographers and videographers.</p>
-                        <button class="product-btn">Get Now</button>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <i class="fas fa-user"></i>
                 </div>
-                
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Social Media Bundle</h3>
-                        <div class="product-price">$39.99</div>
-                        <p class="product-desc">Everything you need to make your social content stand out. Includes 50+ presets and LUTs.</p>
-                        <button class="product-btn">Get Now</button>
-                    </div>
+                <div class="about-text">
+                    <h2>Enzo - Creative Visual Artist</h2>
+                    <p>I'm a passionate photographer, videographer, and UI designer with a deep love for visual storytelling. My journey began with a simple camera and has evolved into a full-fledged creative pursuit.</p>
+                    <p>I specialize in automotive photography and cinematic video editing, with a keen eye for color grading and visual aesthetics. My work is all about capturing emotion and creating immersive visual experiences.</p>
+                    <p>When I'm not behind the camera or editing footage, I'm designing user interfaces and creating presets to help other creators enhance their visual content.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind or want to collaborate? Feel free to reach out to me. I'm always open to discussing new opportunities and creative ideas.</p>
+                <a href="mailto:enzo.carsss@gmail.com" class="contact-btn">Send Email</a>
             </div>
         </div>
     </section>
@@ -636,7 +701,7 @@
                 <div class="credits">
                     <div class="credit">
                         <span>Coded by</span>
-                        <svg class="logo-small" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="deepseek-logo" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 5L5 15H15L10 5Z" fill="#0a84ff"/>
                             <text x="25" y="15" fill="#fff" font-size="12">DeepSeek-V3</text>
                         </svg>
@@ -666,7 +731,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
@@ -679,23 +744,6 @@
             setTimeout(() => {
                 typewriter.style.borderRightColor = 'transparent';
             }, 3500);
-            
-            // Carousel functionality
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.carousel-item');
-            
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                slides[index].classList.add('active');
-            }
-            
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-            
-            // Change slide every 4 seconds
-            setInterval(nextSlide, 4000);
         });
     </script>
 </body>
