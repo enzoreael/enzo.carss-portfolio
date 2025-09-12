@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enzo | Creative Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        :root {
+            --primary-blue: #0066ff;
+            --glow-blue: #0099ff;
+            --dark-bg: #0a0a1a;
+            --glass-dark: rgba(15, 25, 45, 0.7);
+            --glass-light: rgba(30, 60, 114, 0.3);
+            --text-light: #f0f0f0;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 102, 255, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 153, 255, 0.1) 0%, transparent 25%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 20px;
+            background: rgba(10, 15, 30, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 60, 255, 0.15);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 0 15px var(--glow-blue);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(45deg, #fff, var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px var(--glow-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, var(--primary-blue), #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-boxes {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-box {
+            background: var(--glass-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .social-text {
+            font-weight: 600;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-light);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 20px;
+            background: rgba(5, 10, 20, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: var(--glass-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.25);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #001235, #003366);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .product-desc {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .product-btn {
+            background: rgba(0, 102, 255, 0.2);
+            color: var(--text-light);
+            border: 1px solid var(--primary-blue);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .product-btn:hover {
+            background: var(--primary-blue);
+            box-shadow: 0 0 15px var(--glow-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 10, 20, 0.9);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .credits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .credit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-small {
+            height: 20px;
+            width: auto;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .social-boxes {
+                flex-direction: column;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .credits {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Typewriter effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: 0.15em solid var(--primary-blue);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.05em;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-blue) }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://p16-pu-sign-no.tiktokcdn-eu.com/tos-no1a-avt-0068c001-no/9d6953940b54054f65796f3ddd48f349~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=f67db790&x-expires=1757851200&x-signature=q9Qe3UwYWAGLeDY3pz6EQTMvj%2BY%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a" alt="Enzo" class="logo-img">
+                    <span class="logo-text">enzo.carsss</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1 class="typewriter">Hey, I'm Enzo</h1>
+        <p>A hobby photographer, videographer, editor and UI designer who really loves his passion for all things creative. Welcome to my world of visual storytelling.</p>
+        
+        <div class="social-boxes">
+            <div class="social-box">
+                <i class="fab fa-tiktok social-icon"></i>
+                <span class="social-text">enzo.carsss</span>
+            </div>
+            <div class="social-box">
+                <i class="fab fa-instagram social-icon"></i>
+                <span class="social-text">enzo.carsss</span>
+            </div>
+        </div>
+        
+        <a href="#products" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">My Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card floating">
+                    <div class="product-img">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cinematic Preset Pack</h3>
+                        <div class="product-price">$29.99</div>
+                        <p class="product-desc">Enhance your videos with these professional cinematic color grading presets for Premiere Pro.</p>
+                        <button class="product-btn">Get Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card floating">
+                    <div class="product-img">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Golden Hour LUTs</h3>
+                        <div class="product-price">$24.99</div>
+                        <p class="product-desc">Perfect golden hour looks for your footage. Compatible with all major editing software.</p>
+                        <button class="product-btn">Get Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card floating">
+                    <div class="product-img">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mobile Presets Bundle</h3>
+                        <div class="product-price">$19.99</div>
+                        <p class="product-desc">Specifically designed for mobile content creators. Works with CapCut and other mobile editors.</p>
+                        <button class="product-btn">Get Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card floating">
+                    <div class="product-img">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Automotive Pack</h3>
+                        <div class="product-price">$34.99</div>
+                        <p class="product-desc">Specialized presets for car photography and videography. Make vehicles pop with these LUTs.</p>
+                        <button class="product-btn">Get Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card floating">
+                    <div class="product-img">
+                        <i class="fas fa-portrait"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Portrait Pro Presets</h3>
+                        <div class="product-price">$27.99</div>
+                        <p class="product-desc">Flattering skin tones and professional grading for portrait photographers and videographers.</p>
+                        <button class="product-btn">Get Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card floating">
+                    <div class="product-img">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Social Media Bundle</h3>
+                        <div class="product-price">$39.99</div>
+                        <p class="product-desc">Everything you need to make your social content stand out. Includes 50+ presets and LUTs.</p>
+                        <button class="product-btn">Get Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="credits">
+                    <div class="credit">
+                        <span>Coded by</span>
+                        <svg class="logo-small" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 5L5 15H15L10 5Z" fill="#0066ff"/>
+                            <text x="25" y="15" fill="#fff" font-size="12">DeepSeek-V3</text>
+                        </svg>
+                    </div>
+                    <div class="credit">
+                        <span>Hosted by</span>
+                        <i class="fab fa-github" style="color: #fff; font-size: 20px;"></i>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="credit">
+                        <span>Designed by me</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple typewriter effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriter = document.querySelector('.typewriter');
+            setTimeout(() => {
+                typewriter.style.borderRightColor = 'transparent';
+            }, 3500);
+        });
+    </script>
+</body>
+</html>
